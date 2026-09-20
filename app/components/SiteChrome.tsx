@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { navItems } from "../data";
+import { NavigationLink } from "./NavigationLink";
 
 export function Header() {
   return (
@@ -8,13 +9,13 @@ export function Header() {
         <img src="/logo.jpeg" alt="4Ss Engineering Services UAE" />
       </Link>
       <nav className="desktop-nav" aria-label="Primary navigation">
-        {navItems.slice(0, -1).map((item) => <Link key={item.href} href={item.href}>{item.label}</Link>)}
+        {navItems.slice(0, -1).map((item) => <NavigationLink key={item.href} href={item.href}>{item.label}</NavigationLink>)}
       </nav>
       <Link className="button button-gold header-cta" href="/contact">Discuss a Requirement</Link>
       <details className="mobile-menu">
         <summary aria-label="Open navigation"><span /><span /></summary>
         <nav aria-label="Mobile navigation">
-          {navItems.map((item) => <Link key={item.href} href={item.href}>{item.label}</Link>)}
+          {navItems.map((item) => <NavigationLink key={item.href} href={item.href}>{item.label}</NavigationLink>)}
         </nav>
       </details>
     </header>

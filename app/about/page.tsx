@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { companyCopy, fourSs, howWeWork, principles, statements, uaeCommitment, uaeObjective } from "../data";
+import { companyCopy, howWeWork, principles, statements, uaeCommitment, uaeObjective } from "../data";
 import { CTASection, PageHero, SectionHeading, SiteShell } from "../components/SiteChrome";
 
 export const metadata: Metadata = {
@@ -24,13 +24,6 @@ export default function AboutPage() {
               <p className="eyebrow">{statement.label}</p><h2>{statement.title}</h2><p>{statement.text}</p>
             </article>
           ))}
-        </section>
-
-        <section className="section pearl-section">
-          <SectionHeading kicker="Our name" title="The Four Ss" lead="The Four Ss define the responsibilities that should shape how the company chooses technology, scopes work and communicates value." light />
-          <div className="four-s-grid">
-            {fourSs.map((item, index) => <article className="four-s-card reveal" key={item.title}><span>4S / 0{index + 1}</span><h3>{item.title}</h3><p>{item.text}</p></article>)}
-          </div>
         </section>
 
         <section className="section dark-section">

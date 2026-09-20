@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { companyCopy, differentiators, flagshipCapabilities, howWeWork, industries, leaders, outcomes, pillars, technologyCategories } from "./data";
+import { companyCopy, differentiators, flagshipCapabilities, fourSs, howWeWork, industries, outcomes, pillars, technologyCategories } from "./data";
 import { CTASection, Header, OrbitalScene, SectionHeading, Footer } from "./components/SiteChrome";
 
 export default function Home() {
@@ -30,6 +30,13 @@ export default function Home() {
         <section className="editorial light-section split-section">
           <SectionHeading kicker="Company positioning" title={companyCopy.positionHeading} light />
           <div className="body-copy reveal"><p>{companyCopy.position}</p><p>{companyCopy.positionDetail}</p><Link className="text-link" href="/about">About 4Ss <span>↗</span></Link></div>
+        </section>
+
+        <section className="section pearl-section">
+          <SectionHeading kicker="Our name" title="The Four Ss" lead="The Four Ss define the responsibilities that should shape how the company chooses technology, scopes work and communicates value." light />
+          <div className="four-s-grid">
+            {fourSs.map((item, index) => <article className="four-s-card reveal" key={item.title}><span>4S / 0{index + 1}</span><h3>{item.title}</h3><p>{item.text}</p></article>)}
+          </div>
         </section>
 
         <section className="section dark-section">
@@ -94,14 +101,6 @@ export default function Home() {
           <div className="differentiator-grid">
             {differentiators.map((item, index) => <article className="differentiator reveal" key={item.title}><span>0{index + 1}</span><h3>{item.title}</h3><p>{item.text}</p></article>)}
           </div>
-        </section>
-
-        <section className="section leadership-preview">
-          <SectionHeading kicker="Leadership" title="Responsible direction. Technical depth. Long-term intent." />
-          <div className="leadership-preview-grid">
-            {leaders.map((leader, index) => <article className="preview-leader reveal" key={leader.name}><span>0{index + 1}</span><p>{leader.role}</p><h3>{leader.name}</h3></article>)}
-          </div>
-          <Link className="button button-ghost section-action" href="/leadership">Meet Our Leadership</Link>
         </section>
 
         <CTASection title="What do you need to detect, inspect, protect or sustain?" text="Tell us about the environment, the mission and the decision you need to make." label="Contact 4Ss" />
