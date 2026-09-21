@@ -89,7 +89,10 @@ export default function Home() {
         <section className="section technology-section">
           <div>
             <SectionHeading kicker="Technology network" title="Global specialism. Local capability." lead="4Ss develops relationships with specialist technology organizations across radiation, dosimetry, nuclear instrumentation, inspection, autonomy and environmental monitoring." />
-            <Link className="button button-ghost" href="/technology-partners">View Technology &amp; Partners</Link>
+            <div className="technology-actions">
+              <Link className="button button-ghost" href="/technology">View Technology</Link>
+              <Link className="button button-ghost" href="/partners">View Partners</Link>
+            </div>
           </div>
           <div className="tech-cloud" aria-label="Technology categories">
             {technologyCategories.map((category, index) => <span key={category.title} style={{ "--i": index } as React.CSSProperties}>{category.title}</span>)}

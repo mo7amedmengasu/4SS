@@ -38,11 +38,6 @@ export function Footer() {
         <p className="micro-label">The Four Ss</p>
         <span>Safety</span><span>Security</span><span>Safeguards</span><span>Sustainability</span>
       </div>
-      <div className="footer-links">
-        <p className="micro-label">Legal</p>
-        <Link href="/privacy">Privacy</Link>
-        <Link href="/cookies">Cookies</Link>
-      </div>
       <div className="footer-bottom"><span>4Ss Engineering Services</span><span>See the invisible. Protect what matters.</span></div>
     </footer>
   );

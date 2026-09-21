@@ -75,12 +75,7 @@ export function ContactForm() {
       </div>
       <div className="form-field form-wide"><label htmlFor="message">Requirement / Message <span>required</span></label><textarea id="message" name="message" rows={6} required /></div>
       <div className="form-field"><label htmlFor="method">Preferred Contact Method <span>optional</span></label><select id="method" name="method" defaultValue=""><option value="">Select</option><option>Email</option><option>Phone</option></select></div>
-      <label className="consent"><input type="checkbox" required /><span>Consent <LinkToPrivacy /></span></label>
       <div className="form-submit form-wide"><button className="button button-gold" type="submit">Discuss a Requirement <span aria-hidden="true">↗</span></button></div>
     </form>
   );
-}
-
-function LinkToPrivacy() {
-  return <a href="/privacy">Privacy</a>;
 }

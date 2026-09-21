@@ -12,7 +12,8 @@ export const navItems = [
   { label: "About", href: "/about" },
   { label: "Capabilities", href: "/capabilities" },
   { label: "Industries", href: "/industries" },
-  { label: "Technology & Partners", href: "/technology-partners" },
+  { label: "Technology", href: "/technology" },
+  { label: "Partners", href: "/partners" },
   { label: "Leadership", href: "/leadership" },
   { label: "Contact", href: "/contact" },
 ];
