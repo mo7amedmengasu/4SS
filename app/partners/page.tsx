@@ -28,8 +28,9 @@ export default function PartnersPage() {
         <section className="editorial light-section split-section">
           <SectionHeading kicker="Technology network" title="Global specialism. Local capability." light />
           <div className="body-copy reveal">
-            <p>4Ss develops relationships with specialist technology organizations across radiation, dosimetry, nuclear instrumentation, inspection, autonomy and environmental monitoring.</p>
-            <p>Our value is integration. We connect the instrument to the platform, the platform to the data, the data to qualified interpretation, and the solution to the people, procedures and support model that must sustain it.</p>
+            <p>4Ss works with a global network of established technology partners and internationally recognized experts across radiation detection, dosimetry, nuclear instrumentation, advanced inspection, robotics, autonomy and environmental monitoring.</p>
+            <p>Our strength is integration. We bring together specialist technologies, proven global expertise and local engineering capability to connect the instrument, the platform, the data and the qualified technical interpretation into one complete solution.</p>
+            <p>This allows 4Ss to deliver more than equipment. We combine world-class technology, expert knowledge, engineering implementation, training and lifecycle support to create practical, deployment-ready solutions for complex and safety-critical environments.</p>
           </div>
         </section>
 

@@ -5,6 +5,18 @@ export type Capability = {
   headline: string;
   narrative: string;
   services: string[];
+  servicesLabel?: string;
+  techniques?: { title: string; text: string }[];
+  techniquesLabel?: string;
+};
+
+export type Pillar = {
+  id: string;
+  number: string;
+  title: string;
+  summary: string;
+  detailHeadline?: string;
+  detail?: string;
 };
 
 export const navItems = [
@@ -18,7 +30,7 @@ export const navItems = [
   { label: "Contact", href: "/contact" },
 ];
 
-export const pillars = [
+export const pillars: Pillar[] = [
   {
     id: "radiation",
     number: "01",
@@ -42,6 +54,8 @@ export const pillars = [
     number: "04",
     title: "Environment, NORM, Waste & Decommissioning",
     summary: "Characterize environmental and radiological conditions, manage NORM/TENORM and support controlled waste, remediation and decommissioning pathways.",
+    detailHeadline: "Characterize the site. Model the risk. Engineer the pathway.",
+    detail: "4Ss integrates environmental science, radiological engineering, geological and geotechnical assessment, modelling and waste-management expertise to support complex contaminated sites, NORM facilities, industrial assets and decommissioning programs.",
   },
   {
     id: "security",
@@ -106,80 +120,94 @@ export const capabilities: Capability[] = [
     pillar: "radiation",
     title: "Radiation Detection & Monitoring",
     headline: "Know what is present. Know where. Know what to do next.",
-    narrative: "4Ss supports radiation detection from personal awareness and field survey to mobile search, portal screening, fixed-area monitoring and environmental surveillance. We help define the detector, deployment, communications, alarm and lifecycle-support model around the mission.",
-    services: ["Personal radiation detectors and electronic dosimeters", "Survey meters and contamination monitors", "Radionuclide identification and spectrometry", "Backpack, vehicle and transportable detection", "Pedestrian, vehicle and cargo portals", "Fixed-area, process, effluent and environmental monitoring"],
+    narrative: "Detection architectures for identifying, locating and characterizing radiological sources across fixed facilities, mobile operations, borders and critical infrastructure.",
+    services: ["Gamma & neutron detection systems", "Spectroscopic identification and radionuclide analysis", "Handheld, portable and mobile detection platforms", "Area and perimeter radiation monitoring", "Vehicle, cargo and pedestrian portal monitoring", "Contamination monitoring and clearance systems"],
   },
   {
     slug: "environmental-radiation-monitoring",
     pillar: "radiation",
     title: "Environmental Radiation Monitoring",
     headline: "Measure continuously. Understand change.",
-    narrative: "4Ss supports monitoring architectures that connect field instruments, fixed stations, mobile systems, telemetry and data review into a defensible picture of radiological conditions over time.",
-    services: ["Ambient gamma monitoring", "Airborne and effluent monitoring interfaces", "Mobile and fixed environmental stations", "Telemetry and alerting", "Mapping and trend analysis", "Calibration, verification and lifecycle support"],
+    narrative: "Continuous and campaign-based monitoring systems for establishing radiological baselines, identifying abnormal conditions and understanding environmental trends over time.",
+    services: ["Ambient gamma dose-rate monitoring", "Fixed & mobile environmental monitoring stations", "Airborne and effluent radiation monitoring", "Soil, water and environmental survey programs", "GIS-based radiological mapping", "Telemetry, alarms, dashboards and trend analysis"],
   },
   {
     slug: "dosimetry-radiation-protection",
     pillar: "radiation",
     title: "Dosimetry & Radiation Protection",
     headline: "Protect the workforce. Control exposure.",
-    narrative: "4Ss supports personal monitoring, workplace radiation protection and operational dose-control systems around the people, tasks and environments that create exposure risk.",
-    services: ["Personal and operational dosimetry", "Area and task monitoring", "Radiation protection instrumentation", "Dose data workflows and reporting", "Training and operational support", "Program review and lifecycle readiness"],
+    narrative: "Integrated personnel and operational radiation-protection solutions supporting dose control, workplace monitoring.",
+    services: ["Personal and operational dosimetry", "Electronic personal dosimeters", "Area and workplace radiation monitoring", "Dose assessment, recording and reporting", "Radiation protection instrumentation"],
   },
   {
     slug: "nuclear-engineering",
     pillar: "nuclear",
-    title: "Nuclear Engineering & Technical Support",
-    headline: "Engineering discipline for safety-critical work.",
-    narrative: "4Ss coordinates specialist technical support across nuclear and radiological projects, connecting requirements, qualified expertise, documentation, field implementation and lifecycle readiness.",
-    services: ["Technical studies and engineering support", "Requirements definition and design interfaces", "Safety and radiological engineering support", "Technical procedures and documentation", "Commissioning and acceptance support", "Training, readiness and specialist coordination"],
+    title: "Nuclear Engineering, Plant Support & Maintenance",
+    headline: "Engineering certainty for safety-critical nuclear operations.",
+    narrative: "4Ss provides specialist engineering and plant-support capability across the nuclear lifecycle — connecting technical requirements, qualified expertise, field execution and controlled documentation to support safe, reliable and compliant operations.",
+    services: ["Nuclear systems engineering & technical studies", "Plant modifications, design interfaces & engineering support", "Outage, maintenance & specialist field coordination", "Radiological engineering & radiation-protection support", "Commissioning, testing & operational readiness", "Technical procedures, configuration control & documentation"],
   },
   {
     slug: "advanced-ndt-asset-integrity",
     pillar: "inspection",
-    title: "Advanced NDT & Asset Integrity",
-    headline: "See inside the asset. Act before failure.",
-    narrative: "4Ss connects advanced non-destructive testing, digital inspection data and integrity engineering to help clients understand condition, prioritize intervention and extend asset life.",
-    services: ["Ultrasonic and phased-array inspection", "Eddy current and electromagnetic methods", "Visual and remote visual inspection", "Corrosion mapping and thickness measurement", "Digital inspection records and analytics", "Integrity assessment and inspection planning"],
+    title: "Advanced NDT & Digital Inspection",
+    headline: "See inside the asset. Detect degradation before it becomes failure.",
+    narrative: "4Ss combines conventional and advanced NDT with digital acquisition, robotics and data-driven analysis to inspect critical assets with greater coverage, repeatability and traceability. Where access is difficult, hazardous or costly, inspection systems can be deployed using robotic crawlers, autonomous platforms, drones and remote inspection tools.",
+    services: [],
+    techniques: [
+      { title: "Digital Ultrasonic Testing", text: "High-resolution ultrasonic inspection for thickness measurement, corrosion mapping, weld assessment and internal defect detection. Can be integrated with robotic scanners for automated data collection." },
+      { title: "Phased Array Ultrasonic Testing — PAUT", text: "Electronically steered ultrasonic beams provide detailed imaging of welds and complex geometries with improved coverage and defect characterization." },
+      { title: "TOFD — Time of Flight Diffraction", text: "Precise detection and sizing of weld discontinuities using diffraction signals, particularly effective for crack-height measurement and integrity assessment." },
+      { title: "Digital Radiography — DR / CR", text: "Digital X-ray and gamma inspection for internal visualization of welds, piping, components and assemblies with rapid image acquisition, enhancement and archiving." },
+      { title: "Eddy Current Testing — ECT", text: "Electromagnetic inspection for surface and near-surface defects, tube inspection, conductivity measurement and detection of cracking in conductive materials." },
+      { title: "Acoustic Emission Testing — AET", text: "Real-time monitoring of active structural damage by detecting stress-generated acoustic signals from cracking, leakage or material degradation." },
+      { title: "Remote Visual & CCTV Inspection", text: "High-resolution cameras, borescopes and robotic visual systems for internal and inaccessible areas including vessels, pipelines, tanks and confined spaces." },
+      { title: "Magnetic Particle Testing — MT", text: "Detection of surface and near-surface discontinuities in ferromagnetic materials, particularly welds and structural components." },
+      { title: "Liquid Penetrant Testing — PT", text: "Sensitive surface inspection for cracks, porosity and other surface-breaking discontinuities in non-porous materials." },
+      { title: "Leak Testing", text: "Pressure, vacuum, tracer-gas and other techniques for identifying and locating leakage in piping, vessels, systems and sealed components." },
+    ],
   },
   {
     slug: "robotics-remote-inspection",
     pillar: "inspection",
-    title: "Robotics & Remote Inspection",
-    headline: "Put distance between people and hazard.",
-    narrative: "Robotic and remote inspection systems can improve access to confined, elevated, contaminated or otherwise difficult environments while producing repeatable, traceable data for expert review.",
+    title: "Robotics + Digital NDT",
+    headline: "Send the sensor, not the inspector.",
+    narrative: "Digital NDT techniques can be integrated with robotic crawlers, magnetic platforms, pipe robots, drones and autonomous inspection systems, allowing sensors to operate in high-radiation, confined, elevated, underwater or otherwise hazardous environments.",
     services: ["Magnetic and wheeled crawlers", "Pipe, tank and vessel inspection platforms", "Remote visual and NDT payloads", "Radiation mapping payloads", "Teleoperation and mission support", "Inspection data capture and traceability"],
   },
   {
     slug: "smart-autonomous-ai",
     pillar: "inspection",
     title: "Smart Autonomous & AI Solutions",
-    headline: "Send the sensor. Not the risk.",
-    narrative: "4Ss integrates radiation and inspection sensors with UAVs, UGVs, crawlers and remote platforms to extend access and reduce unnecessary human exposure. AI-assisted analytics can help flag anomalies, combine data streams, compare conditions over time and focus expert attention.",
-    services: ["UAV and UGV payload integration", "Remote survey and inspection platforms", "Sensor fusion: radiation, camera, LiDAR, GNSS and GIS", "AI-assisted anomaly detection and prioritization", "Mission planning and route optimization", "Human-reviewed reporting and decision support"],
+    headline: "Combine data streams. Focus expert attention.",
+    narrative: "AI-assisted analytics can help flag anomalies, combine data streams, compare conditions over time and focus expert attention.",
+    services: ["Sensor fusion: radiation, camera, LiDAR, GNSS and GIS", "AI-assisted anomaly detection and prioritization", "Compare conditions over time", "Mission planning and route optimization", "Human-reviewed reporting and decision support"],
   },
   {
     slug: "environmental-radiological-consultancy",
     pillar: "environment",
-    title: "Environmental & Radiological Consultancy",
-    headline: "Better evidence. Stronger environmental decisions.",
-    narrative: "Integrated environmental and radiological consultancy supports clients from early scoping and baseline understanding through assessment, monitoring, mitigation, remediation and closure. Work is delivered within applicable authorisations and qualified-party arrangements.",
-    services: ["Screening, scoping and permitting strategy", "Environmental and social assessment support", "Baseline field surveys and radiological assessment", "Air, water, soil, sediment, ecology and noise studies", "GIS, modelling and data management", "Management plans, audit, remediation and closure planning"],
+    title: "Environmental, Geological & Site Characterization",
+    headline: "Understand the ground before making the decision.",
+    narrative: "Integrated site investigations establish the physical, environmental and radiological conditions that control risk, migration and long-term site performance.",
+    servicesLabel: "We offer:",
+    services: ["Geological & hydrogeological characterization", "Geotechnical and soil-condition assessment", "Soil erosion, sediment transport & surface stability studies", "Groundwater flow and contaminant-migration assessment", "Topographic survey, GIS & digital terrain modelling", "Soil, water, sediment & environmental sampling", "Climate, rainfall, flooding and extreme-weather assessment", "Baseline radiological and environmental surveys", "Environmental impact & risk assessment"],
   },
   {
     slug: "norm-tenorm",
     pillar: "environment",
-    title: "NORM & TENORM",
-    headline: "Characterize first. Control the lifecycle.",
-    narrative: "NORM and TENORM decisions depend on reliable characterization, exposure understanding and a technically and legally appropriate management path. 4Ss helps connect survey, mapping, inventory, assessment and long-term monitoring.",
-    services: ["Radiological surveys and mapping", "Sampling and laboratory coordination", "Inventory and dose assessment", "Segregation and minimization planning", "Storage, transport and clearance interfaces", "Remediation and long-term monitoring"],
+    title: "NORM, Waste & Radiological Assessment",
+    headline: "Characterize first. Control the full lifecycle.",
+    narrative: "4Ss supports technically defensible management of NORM and radioactive waste from characterization and inventory through disposal strategy, remediation and long-term surveillance.",
+    servicesLabel: "We offer:",
+    services: ["NORM inventory, classification & source characterization", "Gamma surveys, dose-rate mapping & contamination assessment", "Soil and waste radiological sampling", "Waste acceptance criteria development", "Segregation, packaging, storage & transport strategy", "Disposal-cell and landfill optimization", "Worker and public dose assessment", "Radionuclide migration and pathway analysis", "Remediation strategy & long-term monitoring"],
   },
   {
     slug: "radioactive-waste-decommissioning",
     pillar: "environment",
-    title: "Radioactive Waste & Decommissioning Support",
-    headline: "Make the end state clear from the start.",
-    narrative: "4Ss supports waste and decommissioning pathways through characterization, planning, measurement, data control and specialist coordination from early strategy through final monitoring.",
-    services: ["Waste characterization and inventory", "Non-destructive assay interfaces", "Segregation and packaging strategy", "Storage and transport interfaces", "Clearance/release measurement support", "Decommissioning and remediation planning"],
+    title: "Modelling & Decision Support",
+    headline: "Turn site data into defensible engineering decisions.",
+    narrative: "For complex disposal, landfill, shielding, remediation and radiological assessment projects, 4Ss combines field data with advanced numerical and radiation-transport modelling to evaluate long-term performance, exposure pathways and engineering controls.",
+    services: ["RESRAD-ONSITE / RESRAD-OFFSITE — dose and exposure-pathway assessment", "GoldSim — long-term environmental, system and probabilistic modelling", "MCNP — Monte Carlo radiation transport, shielding, source-term and detector-response modelling", "DCFPAK — radionuclide dose-conversion factors and internal/external dose assessment support", "GIS-based spatial analysis & radiological mapping", "Groundwater and contaminant-transport modelling", "Climate-change and extreme-event scenario assessment", "Sensitivity, uncertainty & scenario analysis", "Long-term receptor and exposure-pathway modelling"],
   },
   {
     slug: "nuclear-security-cbrne",
@@ -192,9 +220,16 @@ export const capabilities: Capability[] = [
   {
     slug: "technology-integration-lifecycle",
     pillar: "integration",
-    title: "Technology Integration & Lifecycle Support",
-    headline: "Make advanced technology work in the field.",
-    narrative: "The value of specialist technology depends on integration, acceptance, training, maintenance and sustained performance. 4Ss provides one coordinated path from requirement to deployment and long-term readiness.",
+    title: "Technology Integration, Training & Lifecycle Support",
+    headline: "Build capability. Validate competence. Sustain performance.",
+    narrative: "4Ss supports organizations beyond equipment delivery by integrating technology with technical training, operational procedures, competency development and lifecycle support. Programs can be tailored for government, nuclear, industrial, environmental and critical-infrastructure operations.",
+    techniquesLabel: "Technical & Professional Training",
+    techniques: [
+      { title: "HSE & Safety Training", text: "Practical training covering workplace safety, hazard identification, risk assessment, permit-to-work principles, emergency response and safety culture." },
+      { title: "ISO & Management-System Training", text: "ISO-aligned awareness and implementation training covering areas such as ISO 9001, ISO 14001 and ISO 45001, including quality, environmental and occupational health & safety management systems." },
+      { title: "Radiation Protection Training", text: "Courses covering radiation fundamentals, dose and exposure, contamination control, radiation monitoring and dosimetry." },
+    ],
+    servicesLabel: "Integration & Lifecycle Support",
     services: ["Technical requirements and solution architecture", "System and sensor integration", "Factory/site acceptance support", "Training and knowledge transfer", "Maintenance, calibration and spares planning", "Performance review, upgrades and escalation"],
   },
 ];
@@ -234,9 +269,33 @@ export const technologyCategories = [
 ];
 
 export const leaders = [
-  { role: "Chairman", name: "H.E. Mohamed Ali Al Shamsi" },
-  { role: "Vice Chairman", name: "Eng. Nazim Sarhan" },
-  { role: "Chief Executive Officer", name: "Walid A. Elmowafi, PhD" },
+  {
+    role: "Chairman",
+    name: "H.E. Mohamed Ali Al Shamsi",
+    biography: [
+      "H.E. Mohamed Ali Al Shamsi is an accomplished Emirati diplomat and senior public-sector leader with extensive experience in foreign affairs, international cooperation, and crisis management. He holds a Bachelor's Degree in Military Sciences and a Diploma in Crisis and Emergency Management.",
+      "Throughout his career, he served in several senior positions at the Ministry of Foreign Affairs, including Counsellor at the UAE Permanent Mission to the International Atomic Energy Agency, Deputy Director of International Cooperation, and Director of African Affairs.",
+      "H.E. Al Shamsi also served as Ambassador Extraordinary and Plenipotentiary of the UAE to the Republic of Chad and as Ambassador to the State of Libya, contributing to the strengthening of the UAE's diplomatic relations and international partnerships.",
+    ],
+  },
+  {
+    role: "Vice Chairman & Board member",
+    name: "Eng. Nazim S. Nemer",
+    biography: [
+      "Eng. Nazim S. Nemer is a senior professional with over 33 years of experience within ADNOC, where he held key roles across maintenance planning, production operations, IT support, information systems, quality management, project management, and cost optimization.",
+      "Throughout his career, he contributed to the development and implementation of operational and technology-driven solutions, including exploration and development support, production operation systems, and business process improvement initiatives.",
+      "He holds a Bachelor of Science degree in Industrial Engineering from Texas A&M University, Texas, USA.",
+    ],
+  },
+  {
+    role: "Chief Executive Officer & Board member",
+    name: "Dr. Walid A. Elmowafi",
+    biography: [
+      "Dr. Walid A. Elmowafi is a senior nuclear and radiological expert with more than 31 years of experience, including 16 years with the UAE Federal Authority for Nuclear Regulation (FANR). He holds a Ph.D. in Nuclear Safeguards, a Master’s degree in Radiometric Physics, and a Bachelor of Science degree (Physics), all from Mansoura University, with his doctoral work undertaken in cooperation with Karlsruhe Institute of Technology (KIT), Germany.",
+      "During his time at FANR, he served for approximately 10 years as Process Owner for Emergency Preparedness and Response, conducted regulatory inspections, contributed to the development of UAE nuclear and radiation regulations and regulatory guides, and participated in the development and supervision of national emergency plans. He also served as the UAE National INES Officer with the IAEA, participated in major national emergency exercises, and chaired three national nuclear emergency preparedness exercises for the Barakah Nuclear Power Plant.",
+      "His experience also includes leading audits of FANR’s environmental laboratory in accordance with ISO/IEC 17025.",
+    ],
+  },
 ];
 
 export const companyCopy = {

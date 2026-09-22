@@ -38,6 +38,28 @@ export default function AboutPage() {
           <div className="process-line">{howWeWork.map((step) => <article className="process-step reveal" key={step.number}><span>{step.number}</span><h3>{step.title}</h3><p>{step.text}</p></article>)}</div>
         </section>
 
+        <section className="presidential-quote" aria-labelledby="presidential-quote-heading">
+          <figure className="presidential-portrait reveal">
+            <img
+              src="/imirates presedant.jpeg"
+              width="1500"
+              height="1080"
+              alt="His Highness Sheikh Mohamed bin Zayed Al Nahyan, President of the United Arab Emirates"
+            />
+          </figure>
+          <div className="presidential-quote-copy reveal">
+            <p className="eyebrow">A vision for sustainable progress</p>
+            <span className="presidential-quote-mark" aria-hidden="true">“</span>
+            <blockquote id="presidential-quote-heading">
+              The UAE is keen to establish an integrated system for artificial intelligence to identify effective solutions for energy sustainability, ensuring energy security, and achieving sustainable economic and social development.
+            </blockquote>
+            <div className="presidential-attribution">
+              <strong>H.H. Sheikh Mohamed bin Zayed Al Nahyan</strong>
+              <span>President of the United Arab Emirates</span>
+            </div>
+          </div>
+        </section>
+
         <section className="uae-band">
           <div className="uae-accent" aria-hidden="true"><span /><span /><span /><span /></div>
           <div className="reveal"><p className="eyebrow">UAE commitment</p><h2>Global specialism. Local capability. Long-term value.</h2></div>

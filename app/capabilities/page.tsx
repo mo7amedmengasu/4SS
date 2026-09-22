@@ -22,13 +22,30 @@ export default function CapabilitiesPage() {
           const items = capabilities.filter((capability) => capability.pillar === pillar.id);
           return (
             <section className={`capability-pillar ${pillarIndex % 2 ? "pillar-light" : "pillar-dark"}`} id={pillar.id} key={pillar.id}>
-              <div className="pillar-heading reveal"><span>{pillar.number}</span><div><p className="eyebrow">Capability pillar</p><h2>{pillar.title}</h2><p>{pillar.summary}</p></div></div>
+              <div className="pillar-heading reveal"><span>{pillar.number}</span><div><p className="eyebrow">Capability pillar</p><h2>{pillar.title}</h2>{pillar.detailHeadline && <h3 className="pillar-detail-headline">{pillar.detailHeadline}</h3>}<p>{pillar.detail ?? pillar.summary}</p></div></div>
               {items.length > 0 ? items.map((capability, index) => (
-                <article className={`capability-detail reveal ${index % 2 ? "reverse" : ""}`} id={capability.slug} key={capability.slug}>
+                <article className={`capability-detail reveal ${index % 2 ? "reverse" : ""} ${capability.techniques ? "has-techniques" : ""} ${capability.slug === "robotics-remote-inspection" ? "capability-featured" : ""}`} id={capability.slug} key={capability.slug}>
                   <div className="capability-visual" aria-hidden="true"><div className="sensor-disc"><span>{pillar.number}.{index + 1}</span></div><i /><i /><i /></div>
                   <div className="capability-copy">
                     <p className="micro-label">{capability.title}</p><h3>{capability.headline}</h3><p>{capability.narrative}</p>
-                    <ul>{capability.services.map((service) => <li key={service}>{service}</li>)}</ul>
+                    {capability.techniques ? (
+                      <div className="inspection-accordion">
+                        <p className="micro-label">{capability.techniquesLabel ?? "Inspection Techniques"}</p>
+                        <div className="technique-list">
+                          {capability.techniques.map((technique, techniqueIndex) => (
+                            <details className="technique-item" key={technique.title}>
+                              <summary>
+                                <span>{String(techniqueIndex + 1).padStart(2, "0")}</span>
+                                <strong>{technique.title}</strong>
+                                <i aria-hidden="true">+</i>
+                              </summary>
+                              <p>{technique.text}</p>
+                            </details>
+                          ))}
+                        </div>
+                      </div>
+                    ) : null}
+                    {capability.services.length > 0 && <>{capability.servicesLabel && <p className="services-label">{capability.servicesLabel}</p>}<ul>{capability.services.map((service) => <li key={service}>{service}</li>)}</ul></>}
                     <Link className={`button ${pillarIndex % 2 ? "button-dark" : "button-ghost"}`} href={`/contact?capability=${capability.slug}&source=capabilities`}>Discuss This Capability <span>↗</span></Link>
                   </div>
                 </article>
