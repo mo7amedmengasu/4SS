@@ -19,7 +19,9 @@ export default function IndustriesPage() {
         <section className="industry-sections">
           {industries.map((industry, index) => (
             <article className="industry-detail reveal" id={industry.slug} key={industry.slug}>
-              <div className="industry-visual" aria-hidden="true"><span>{industry.number}</span><div className="depth-frame" /><div className="depth-frame second" /></div>
+              <figure className="industry-visual">
+                <img src={`/industry${index + 1}.png`} alt={industry.title} loading="lazy" />
+              </figure>
               <div><p className="eyebrow">Engineering for critical industries</p><h2>{industry.title}</h2><p>{industry.text}</p><RelatedChips ids={industry.related} /><Link className="button button-dark" href={`/contact?industry=${industry.slug}&source=industries`}>{index === 0 || index === 3 ? "Start a Private Discussion" : index === 6 ? "Discuss Your Site" : "Discuss a Requirement"}<span>↗</span></Link></div>
             </article>
           ))}

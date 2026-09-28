@@ -6,7 +6,7 @@ export function Header() {
   return (
     <header className="site-header">
       <Link href="/" className="brand" aria-label="4Ss Engineering Services home">
-        <img src="/logo.jpeg" alt="4Ss Engineering Services UAE" />
+        <img src="/logo.png" alt="4Ss Engineering Services UAE" />
       </Link>
       <nav className="desktop-nav" aria-label="Primary navigation">
         {navItems.slice(0, -1).map((item) => <NavigationLink key={item.href} href={item.href}>{item.label}</NavigationLink>)}
@@ -26,7 +26,7 @@ export function Footer() {
   return (
     <footer className="site-footer">
       <div className="footer-brand">
-        <img src="/logo.jpeg" alt="4Ss Engineering Services UAE" />
+        <img src="/logo.png" alt="4Ss Engineering Services UAE" />
         <p>Integrated nuclear, radiation, inspection and environmental engineering for critical environments.</p>
         <span>Abu Dhabi | United Arab Emirates</span>
       </div>

@@ -24,8 +24,58 @@ export default function CapabilitiesPage() {
             <section className={`capability-pillar ${pillarIndex % 2 ? "pillar-light" : "pillar-dark"}`} id={pillar.id} key={pillar.id}>
               <div className="pillar-heading reveal"><span>{pillar.number}</span><div><p className="eyebrow">Capability pillar</p><h2>{pillar.title}</h2>{pillar.detailHeadline && <h3 className="pillar-detail-headline">{pillar.detailHeadline}</h3>}<p>{pillar.detail ?? pillar.summary}</p></div></div>
               {items.length > 0 ? items.map((capability, index) => (
-                <article className={`capability-detail reveal ${index % 2 ? "reverse" : ""} ${capability.techniques ? "has-techniques" : ""} ${capability.slug === "robotics-remote-inspection" ? "capability-featured" : ""}`} id={capability.slug} key={capability.slug}>
-                  <div className="capability-visual" aria-hidden="true"><div className="sensor-disc"><span>{pillar.number}.{index + 1}</span></div><i /><i /><i /></div>
+                <article className={`capability-detail reveal ${index % 2 ? "reverse" : ""} ${capability.techniques ? "has-techniques" : ""} ${pillar.id === "radiation" ? "radiation-capability" : ""} ${capability.slug === "nuclear-engineering" ? "nuclear-capability" : ""} ${capability.slug === "advanced-ndt-asset-integrity" ? "advanced-ndt-capability" : ""} ${capability.slug === "robotics-remote-inspection" ? "capability-featured" : ""}`} id={capability.slug} key={capability.slug}>
+                  {pillar.id === "radiation" ? (
+                    <figure className={`capability-visual capability-image-visual radiation-visual-${index + 1}`}>
+                      <img
+                        src={`/capabilities/Radiation Detection, Monitoring & Dosimetry/${["cap1_.png", "cap2.png", "cap3.png"][index]}`}
+                        alt={`${capability.title} equipment`}
+                        loading="lazy"
+                      />
+                    </figure>
+                  ) : capability.slug === "nuclear-engineering" ? (
+                    <figure className="capability-visual nuclear-image-visual">
+                      <img
+                        src="/capabilities/Nuclear Engineering, Plant Support & Maintenance/cap1.png"
+                        alt="Nuclear engineering, plant support and maintenance facility"
+                        loading="lazy"
+                      />
+                    </figure>
+                  ) : capability.slug === "advanced-ndt-asset-integrity" ? (
+                    <figure className="capability-visual advanced-ndt-image-visual">
+                      <img
+                        src="/capabilities/Advanced NDT, Robotics & AI Inspection/advanced-ndt-equipment-collage.png"
+                        alt="Advanced NDT and digital inspection equipment"
+                        loading="lazy"
+                      />
+                    </figure>
+                  ) : capability.slug === "robotics-remote-inspection" ? (
+                    <figure className="capability-visual robotics-image-visual">
+                      <img
+                        src="/capabilities/Advanced NDT, Robotics & AI Inspection/cap2.png"
+                        alt="Robotic crawler performing digital NDT inspection on industrial pipework"
+                        loading="lazy"
+                      />
+                    </figure>
+                  ) : capability.slug === "smart-autonomous-ai" ? (
+                    <figure className="capability-visual smart-ai-image-visual">
+                      <img
+                        src="/capabilities/Advanced NDT, Robotics & AI Inspection/cap3.png"
+                        alt="Autonomous wheeled and tracked robotic inspection platforms"
+                        loading="lazy"
+                      />
+                    </figure>
+                  ) : capability.slug === "environmental-radiological-consultancy" ? (
+                    <figure className="capability-visual environment-site-image-visual">
+                      <img
+                        src="/capabilities/Environment, NORM, Waste & Decommissioning/cap1.png"
+                        alt="Environmental site characterization team surveying industrial pipeline infrastructure"
+                        loading="lazy"
+                      />
+                    </figure>
+                  ) : (
+                    <div className="capability-visual" aria-hidden="true"><div className="sensor-disc"><span>{pillar.number}.{index + 1}</span></div><i /><i /><i /></div>
+                  )}
                   <div className="capability-copy">
                     <p className="micro-label">{capability.title}</p><h3>{capability.headline}</h3><p>{capability.narrative}</p>
                     {capability.techniques ? (

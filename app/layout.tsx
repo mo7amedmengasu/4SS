@@ -4,7 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "4Ss Engineering Services",
   description: "Advanced radiation, nuclear, inspection, robotics and environmental engineering from Abu Dhabi for critical environments.",
-  icons: { icon: "/logo.jpeg" },
+  icons: { icon: "/logo.png" },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

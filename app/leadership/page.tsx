@@ -24,7 +24,7 @@ export default function LeadershipPage() {
               <p>Our ambition is to contribute to a safer, more resilient and technologically capable future — creating value that endures for generations.</p>
             </blockquote>
             <figure className="chairman-signature">
-              <div className="signature-plate"><img src="/signature.jpeg" width="1600" height="500" alt="Signature of H.E. Mohamed Ali Al Shamsi" /></div>
+              <div className="signature-plate"><img src="/signature.png" width="1600" height="500" alt="Signature of H.E. Mohamed Ali Al Shamsi" /></div>
               <figcaption><strong>{leaders[0].name}</strong><span>{leaders[0].role}</span></figcaption>
             </figure>
           </div>
